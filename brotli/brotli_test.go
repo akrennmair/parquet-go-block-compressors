@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"testing"
 
-	_ "github.com/akrennmair/parquet-go-block-compressors/brotli"
+	"github.com/akrennmair/parquet-go-block-compressors/brotli"
 	goparquet "github.com/fraugster/parquet-go"
 	"github.com/fraugster/parquet-go/parquet"
 	"github.com/fraugster/parquet-go/parquetschema"
@@ -12,6 +12,8 @@ import (
 )
 
 func TestWriteThenReadBrotliCompressed(t *testing.T) {
+	goparquet.RegisterBlockCompressor(parquet.CompressionCodec_BROTLI, brotli.NewBrotliBlockCompressor())
+
 	sd, err := parquetschema.ParseSchemaDefinition(`message msg {
 		required binary foo (STRING);
 		required int64 bar;
@@ -27,7 +29,7 @@ func TestWriteThenReadBrotliCompressed(t *testing.T) {
 		"bar": int64(4200023),
 	})
 	require.NoError(t, err)
-	fw.Close()
+	require.NoError(t, fw.Close())
 
 	r, err := goparquet.NewFileReader(bytes.NewReader(buf.Bytes()))
 	require.NoError(t, err)
