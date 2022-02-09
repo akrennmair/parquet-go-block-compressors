@@ -1,6 +1,8 @@
 package zstd
 
 import (
+	goparquet "github.com/fraugster/parquet-go"
+	"github.com/fraugster/parquet-go/parquet"
 	"github.com/klauspost/compress/zstd"
 )
 
@@ -24,4 +26,8 @@ func (c *ZstdBlockCompressor) CompressBlock(data []byte) ([]byte, error) {
 
 func (c *ZstdBlockCompressor) DecompressBlock(data []byte) ([]byte, error) {
 	return c.dec.DecodeAll(data, nil)
+}
+
+func init() {
+	goparquet.RegisterBlockCompressor(parquet.CompressionCodec_ZSTD, NewZstdBlockCompressor())
 }
