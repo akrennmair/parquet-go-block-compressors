@@ -16,12 +16,23 @@ import (
     _ "github.com/akrennmair/parquet-go-block-compressors/zstd" // registers the Zstd block compressor with parquet-go
     _ "github.com/akrennmair/parquet-go-block-compressors/brotli" // registers the Brotli block compressor with parquet-go
     _ "github.com/akrennmair/parquet-go-block-compressors/lzo" // registers the LZO block compressor with parquet-go
+    _ "github.com/akrennmair/parquet-go-block-compressors/lz4raw" // registers the LZ4 block compressor with the LZ4_RAW compression type with parquet-go
 )
 ```
 
+## Documentation
+
+* [Go documentation for github.com/akrennmair/parquet-go-block-compressors/zstd](https://pkg.go.dev/github.com/akrennmair/parquet-go-block-compressors/zstd)
+* [Go documentation for github.com/akrennmair/parquet-go-block-compressors/brotli](https://pkg.go.dev/github.com/akrennmair/parquet-go-block-compressors/brotli)
+* [Go documentation for github.com/akrennmair/parquet-go-block-compressors/lzo](https://pkg.go.dev/github.com/akrennmair/parquet-go-block-compressors/lzo)
+* [Go documentation for github.com/akrennmair/parquet-go-block-compressors/lz4raw](https://pkg.go.dev/github.com/akrennmair/parquet-go-block-compressors/lz4raw)
+
 ## License
 
-See the file `LICENSE` for further license information.
+See the file `LICENSE` for further license information for the libraries contained in this repository.
+
+Please note that `github.com/akrennmair/parquet-go-block-compressors/lzo` is built using `github.com/cyberdelia/lzo` which in turn
+uses the original [LZO implementation which is licensed as GPLv2+](http://www.oberhumer.com/opensource/lzo/). Please be aware of the licensing implication this can have if you intend to use this in closed-source products that you intend to distribute.
 
 ## Author
 
