@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/akrennmair/parquet-go-block-compressors/zstd"
 	goparquet "github.com/fraugster/parquet-go"
 	"github.com/fraugster/parquet-go/parquet"
 	"github.com/fraugster/parquet-go/parquetschema"
@@ -12,8 +11,6 @@ import (
 )
 
 func TestWriteThenReadBrotliCompressed(t *testing.T) {
-	goparquet.RegisterBlockCompressor(parquet.CompressionCodec_ZSTD, zstd.NewZstdBlockCompressor())
-
 	sd, err := parquetschema.ParseSchemaDefinition(`message msg {
 		required binary foo (STRING);
 		required int64 bar;

@@ -1,7 +1,6 @@
 # parquet-go-block-compressors
 
 <p align="center">
-<a href="https://godoc.org/github.com/akrennmair/parquet-go-block-compressors"><img src="https://img.shields.io/badge/godoc-reference-blue.svg?color=blue"></a>
 <a href="https://github.com/akrennmair/parquet-go-block-compressors/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202-blue"></a>
 </p>
 
@@ -16,6 +15,7 @@ algorithm will be automatically available in `parquet-go`.
 import (
     _ "github.com/akrennmair/parquet-go-block-compressors/zstd" // registers the Zstd block compressor with parquet-go
     _ "github.com/akrennmair/parquet-go-block-compressors/brotli" // registers the Brotli block compressor with parquet-go
+    _ "github.com/akrennmair/parquet-go-block-compressors/lzo" // registers the LZO block compressor with parquet-go
 )
 ```
 

@@ -1,4 +1,4 @@
-package brotli_test
+package lzo_test
 
 import (
 	"bytes"
@@ -10,7 +10,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestWriteThenReadBrotliCompressed(t *testing.T) {
+func TestWriteThenReadLZOCompressed(t *testing.T) {
 	sd, err := parquetschema.ParseSchemaDefinition(`message msg {
 		required binary foo (STRING);
 		required int64 bar;
@@ -19,7 +19,7 @@ func TestWriteThenReadBrotliCompressed(t *testing.T) {
 
 	buf := &bytes.Buffer{}
 
-	fw := goparquet.NewFileWriter(buf, goparquet.WithSchemaDefinition(sd), goparquet.WithCompressionCodec(parquet.CompressionCodec_BROTLI))
+	fw := goparquet.NewFileWriter(buf, goparquet.WithSchemaDefinition(sd), goparquet.WithCompressionCodec(parquet.CompressionCodec_LZO))
 
 	err = fw.AddData(map[string]interface{}{
 		"foo": []byte("hello world"),
